@@ -26,7 +26,8 @@ class MicropostsController extends Controller
         }
     }
     
-        public function store(Request $request)
+        
+    public function store(Request $request)
     {
         $this->validate($request, [
             'content' => 'required|max:191',
@@ -39,6 +40,24 @@ class MicropostsController extends Controller
         return redirect()->back();
     }
     
+    
+    /*
+    
+        public function store($id)
+    {
+        $this->validate([
+            'content' => 'max:191',
+        ]);
+
+        $request->user()->microposts()->create([
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back();
+    }
+    
+    
+    */
         public function destroy($id)
     {
         $micropost = \App\Micropost::find($id);
